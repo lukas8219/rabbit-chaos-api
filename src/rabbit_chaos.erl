@@ -5,14 +5,18 @@
 %% Copyright (c) 2007-2020 VMware, Inc. or its affiliates.  All rights reserved.
 %%
 
--module(rabbit_metronome).
+-module(rabbit_chaos).
 
 -behaviour(application).
 
 -export([start/2, stop/1]).
 
 start(normal, []) ->
-    rabbit_metronome_sup:start_link().
+    Dispatch = cowboy_router:compile([
+        {'_', [{"/chaosApi/v1/experiments", chaos_handler, []}]}
+    ]),
+    cowboy:start_clear(chaos_http, [{port, 8080}], #{env => #{dispatch => Dispatch}}),
+    rabbit_chaos_sup:start_link().
 
 stop(_State) ->
     ok.

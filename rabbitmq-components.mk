@@ -52,7 +52,6 @@ dep_rabbitmq_auth_mechanism_ssl       = git_rmq-subfolder rabbitmq-auth-mechanis
 dep_rabbitmq_aws                      = git_rmq-subfolder rabbitmq-aws $(current_rmq_ref) $(base_rmq_ref) main
 dep_rabbitmq_boot_steps_visualiser    = git_rmq           rabbitmq-boot-steps-visualiser $(current_rmq_ref) $(base_rmq_ref) main
 dep_rabbitmq_cli                      = git_rmq-subfolder rabbitmq-cli $(current_rmq_ref) $(base_rmq_ref) main
-dep_rabbitmq_codegen                  = git_rmq-subfolder rabbitmq-codegen $(current_rmq_ref) $(base_rmq_ref) main
 dep_rabbitmq_consistent_hash_exchange = git_rmq-subfolder rabbitmq-consistent-hash-exchange $(current_rmq_ref) $(base_rmq_ref) main
 dep_rabbitmq_ct_client_helpers        = git_rmq-subfolder rabbitmq-ct-client-helpers $(current_rmq_ref) $(base_rmq_ref) main
 dep_rabbitmq_ct_helpers               = git_rmq-subfolder rabbitmq-ct-helpers $(current_rmq_ref) $(base_rmq_ref) main
@@ -140,7 +139,6 @@ RABBITMQ_COMPONENTS = amqp_client \
 		      rabbitmq_aws \
 		      rabbitmq_boot_steps_visualiser \
 		      rabbitmq_cli \
-		      rabbitmq_codegen \
 		      rabbitmq_consistent_hash_exchange \
 		      rabbitmq_ct_client_helpers \
 		      rabbitmq_ct_helpers \
