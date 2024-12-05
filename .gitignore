@@ -16,6 +16,7 @@
 
 /rabbit_chaos.d
 rabbit_chaos.plt
+*.dump
 
 /.bazelrc
 /bazel-*

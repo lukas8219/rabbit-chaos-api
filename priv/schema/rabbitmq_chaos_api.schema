@@ -1,0 +1,8 @@
+{mapping, "chaos_api.port", "rabbitmq_chaos_api.port",
+    [{datatype, integer}]}.
+
+{translation, "rabbitmq_chaos_api.port",
+fun(Conf) ->
+    Port = cuttlefish:conf_get("chaos_api.port", Conf),
+    list_to_binary(Port)
+end}.
