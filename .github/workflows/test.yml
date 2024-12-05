@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        otp: [23.2]
+        otp: [26.2]
     steps:
     - name: CHECKOUT
       uses: actions/checkout@v2
@@ -13,7 +13,7 @@ jobs:
       uses: actions/setup-elixir@v1
       with:
         otp-version: ${{ matrix.otp }}
-        elixir-version: 1.10.4
+        elixir-version: 1.16.3
     - name: DIALYZE
       run: make dialyze
     - name: TEST

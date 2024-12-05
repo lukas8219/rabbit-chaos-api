@@ -13,9 +13,9 @@
 
 start(normal, []) ->
     Dispatch = cowboy_router:compile([
-        {'_', [{"/chaosApi/v1/experiments", chaos_handler, []}]}
+        {'_', [{"/api/v1/experiments", chaos_handler, []}]}
     ]),
-    cowboy:start_clear(chaos_http, [{port, 8080}], #{env => #{dispatch => Dispatch}}),
+    cowboy:start_clear(chaos_http, [{port, 8080}], #{env => #{dispatch => Dispatch}}), % Externalize port
     rabbit_chaos_sup:start_link().
 
 stop(_State) ->

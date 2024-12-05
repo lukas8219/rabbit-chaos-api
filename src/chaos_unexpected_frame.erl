@@ -6,10 +6,10 @@
 %% This forces channels to receive weird instructions and thus closing connections with unexpected frames
 %% Might not work so well since this breaks communication between client/server.
 %% Ex: this will stop sending messages to consumers. If you need consumers to trigger publishes, like an EDA, this might not be the best experiment.
-execute(_) ->
+execute(#{<<"percentage">> := Percentage}) when Percentage > 0 andalso Percentage =< 100 ->
     Channels = pg_local:get_members(rabbit_channels),
     TotalCount = length(Channels),
-    ShutdownCount = ceil(TotalCount * (25 / 100)),
+    ShutdownCount = ceil(TotalCount * (Percentage / 100)),
     RandomChannels = lists:sublist(
 	lists:sort([{rand:uniform(), Chan} || Chan <- Channels]),
 	ShutdownCount
