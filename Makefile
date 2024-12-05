@@ -8,8 +8,8 @@ current_rmq_ref = $(RABBITMQ_VERSION)
 dep_rabbit_common              = git_rmq-subfolder rabbitmq-common $(RABBITMQ_VERSION)
 dep_rabbit                     = git_rmq-subfolder rabbitmq-server $(RABBITMQ_VERSION)
 
-DEPS = rabbit_common rabbit cowboy jiffy
-dep_jiffy = hex 1.1.2
+DEPS = rabbit_common rabbit cowboy thoas
+dep_thoas = hex 1.2.1
 TEST_DEPS = rabbitmq_ct_helpers rabbitmq_ct_client_helpers
 
 

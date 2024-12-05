@@ -9,10 +9,6 @@ load("@rabbitmq-server//:rabbitmq_run.bzl", "rabbitmq_run", "rabbitmq_run_comman
 load("@rabbitmq-server//:rabbitmqctl.bzl", "rabbitmqctl")
 load("@bazel-erlang//:ct.bzl", "ct_suite")
 
-APP_ENV = """[
-	    {exchange, <<"metronome">>}
-	  ]"""
-
 DEPS = [
     "@rabbitmq-server//deps/rabbit_common:bazel_erlang_lib",
     "@rabbitmq-server//deps/amqp_client:bazel_erlang_lib",
@@ -23,10 +19,10 @@ RUNTIME_DEPS = [
 ]
 
 rabbitmq_lib(
-    app_description = "Embedded Rabbit Metronome",
+    app_description = "Embedded Rabbit chaos_api",
     app_env = APP_ENV,
-    app_module = "rabbit_metronome",
-    app_name = "rabbitmq_metronome",
+    app_module = "rabbit_chaos_api",
+    app_name = "rabbitmq_chaos_api",
     runtime_deps = RUNTIME_DEPS,
     deps = DEPS,
 )
@@ -56,7 +52,7 @@ rabbitmqctl(
 )
 
 ct_suite(
-    name = "metronome_SUITE",
+    name = "chaos_api_SUITE",
     data = [
         "@rabbitmq_ct_helpers//tools/tls-certs:Makefile",
         "@rabbitmq_ct_helpers//tools/tls-certs:openssl.cnf.in",

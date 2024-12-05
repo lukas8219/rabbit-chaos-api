@@ -15,6 +15,7 @@
 /sbin.lock
 
 /rabbit_chaos.d
+rabbit_chaos.plt
 
 /.bazelrc
 /bazel-*
