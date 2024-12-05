@@ -10,9 +10,6 @@ execute(#{<<"percentage">> := Percentage}) when Percentage > 0 andalso Percentag
     Channels = pg_local:get_members(rabbit_channels),
     TotalCount = length(Channels),
     ShutdownCount = ceil(TotalCount * (Percentage / 100)),
-    RandomChannels = lists:sublist(
-	lists:sort([{rand:uniform(), Chan} || Chan <- Channels]),
-	ShutdownCount
-	),
-	[delegate:invoke(Pid, {rabbit_channel, shutdown, []}) || {_, Pid} <- RandomChannels],
+    RandomChannels = lists:sublist(lists:sort([{rand:uniform(), Chan} || Chan <- Channels]), ShutdownCount),
+    [delegate:invoke(Pid, {rabbit_channel, shutdown, []}) || {_, Pid} <- RandomChannels],
 	ok.
